@@ -1,0 +1,54 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #262626;
+    font-family: arial;
+}
+
+.logo{
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%,-50%); 
+
+}
+
+
+
+
+.loader{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%); 
+}
+
+.loader h1{
+    margin: 0;
+    padding: 0;
+    font-size: 44em;
+    text-transform: uppercase;
+    color: rgba(255, 255,255,.1);
+    background-image: url("C:/Users/eugen/OneDrive/Escritorio/Projecto web/img/OlaFondo.png");
+    background-repeat: repeat-x;
+    -webkit-background-clip: text;  
+    animation: animate 15s linear infinite;
+}
+
+@keyframes animate{
+    0%{
+        background-position: left -350px top 100px;
+    }
+
+    40%{
+        background-position: left 900px top -100px;
+    }
+
+    80%{
+        background-position: left 2150px top -100px;
+    }
+
+    100%{
+        background-position: left 3400px top 100px;
+    }
+}
