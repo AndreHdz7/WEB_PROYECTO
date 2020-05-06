@@ -5,7 +5,7 @@ if(!isset($_POST["usuario"]))
 }
 try {
 
-    //Conexion a nuestro servidor local 
+    //Conexion a nuestro servidor local
     $conexion = new PDO('mysql: host=localhost; dbname=proyectoweb; charset=utf8','root','');
     $conexion -> setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
     $peticion = "SELECT * FROM usuarios WHERE Correo= :nom";
