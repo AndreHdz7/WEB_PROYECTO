@@ -24,7 +24,7 @@ try {
     {
         if($fila["Verificar"]==0)
         {
-            echo "<center><img src='../img/logo.png' id='logo'>
+            echo "<center><img src='../img/logoError.png' id='logoError'>
                   <br><h3>No encontramos informacion con los datos proporcionados</h3>
                   <br><a href='../login.php' class='btn center'>Regresar a login</a></center>";
                   
