@@ -35,11 +35,13 @@ function readRecords() {
 }
 
 
-function DeleteUser(id) {
+function DeleteUser() {
+
+    var idBoleta = $("#delete_idBoleta").val();
     var conf = confirm("¿Está seguro, realmente desea eliminar el registro?");
     if (conf == true) {
         $.post("./ajax/deleteUser.php", {
-                id: id
+                idBoleta: idBoleta
             },
             function (data, status) {
                 // reload Users by using readRecords();
@@ -92,6 +94,41 @@ function UpdateUserDetails() {
         }
     );
 }
+function MessagePublic() {
+    // get values
+    var mensajePublico = $("#add_mensajeP").val();
+    // Update the details by requesting to the server using ajax
+    $.post("./ajax/updateMessagePublic.php", {
+            mensajePublico: mensajePublico,
+          
+        },
+        function (data, status) {
+            // hide modal popup
+            $("#modelMP").modal("hide");
+            // reload Users by using readRecords();
+            readRecords();
+        }
+    );
+}
+function MessagePrivate() {
+    // get values
+    var mensajePrivado= $("#add_mensajePP").val();
+    var idBoleta = $("#msg_idBoleta").val();
+    // Update the details by requesting to the server using ajax
+    $.post("./ajax/updateMessagePrivate.php", {
+            mensajePrivado: mensajePrivado,
+            idBoleta:idBoleta
+          
+        },
+        function (data, status) {
+            // hide modal popup
+            $("#modelMP2").modal("hide");
+            // reload Users by using readRecords();
+            readRecords();
+        }
+    );
+}
+
 
 
 (function ($) { $(document).ready(function(){ readRecords() }); })(jQuery); 

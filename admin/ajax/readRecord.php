@@ -17,7 +17,11 @@
 	$query = "SELECT * FROM usuarios";
 
 	if (!$result = mysqli_query($con, $query)) {
-        exit(mysqli_error($con));
+		exit(mysqli_error($con));
+		echo "<center><img src='../img/logo.png' id='logo'>
+                  <br><h3>No encontramos informacion con los datos proporcionados</h3>
+                  <br><a href='../login.php' class='btn center'>Regresar a login</a></center>";
+   
     }
 
     // if query results contains rows then featch those rows 

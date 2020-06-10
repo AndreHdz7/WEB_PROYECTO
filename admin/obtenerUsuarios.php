@@ -40,8 +40,9 @@
           <li class="blog dropdown"><a>Admin</a>
             <span class="selector"></span>
             <ul>
-              <li><a href="#">Mensaje general</a></li>
-                <li><a href="#">Mensaje privado</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#modelMP">Mensaje general</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#modelMP2">Mensaje privado</a>
+                </li>
                 <li><a href="#">Salir</a></li>
               </ul>
             </li>   
@@ -55,6 +56,24 @@
       </div>
     </div>
   </nav>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <h2 class="text-center">Mensaje General</h3>
+        <?php
+        $sqlMess = "SELECT `mensaje_publico` FROM `mensaje_publico` WHERE `idmensaje_publico`=1";
+        $resultadoMess=mysqli_query($conexion,$sqlMess);
+        $mostrarMess = mysqli_fetch_array($resultadoMess);
+        echo $mostrarMess['mensaje_publico'];
+         ?>
+
+</div>
+<br>
+<br>
+<br>
 <br>
 <br>
 <div class="container"> 
@@ -137,21 +156,11 @@
             </div>
           </div>
         </div>
-        <!--
-        <script>
-          $('#exampleModal').on('show.bs.modal', event => {
-            var button = $(event.relatedTarget);
-            var modal = $(this);
-            // Use above variables to manipulate the DOM
-            
-          });
-        </script>
-        -->
 
 </div>
 <div class="container">
         
-        <!-- Modal Update a usuarios -->
+        <!-- Modal Delete a usuarios -->
         <div class="modal fade" id="modelId2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -165,31 +174,79 @@
                 <div class="container-fluid">
                     <div class="form-group">
                       <label for="id_Boleta">Boleta</label>
-                      <input  type="text" id="idBoleta" value=""  class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                      <label for="Usuario Alumno">Usuario</label>
-                      <input type="text" id="userAlumno" class="form-control" value=""/> 
-                    </div>        
+                      <input  type="text" id="delete_idBoleta" value=""  class="form-control"/>
+                    </div>  
                 </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-warning" onclick="deleteUser()">Save</button>
+                <button type="button" class="btn btn-warning" onclick="DeleteUser()">Save</button>
               </div>
             </div>
           </div>
         </div>
-        <!--
-        <script>
-          $('#exampleModal').on('show.bs.modal', event => {
-            var button = $(event.relatedTarget);
-            var modal = $(this);
-            // Use above variables to manipulate the DOM
-            
-          });
-        </script>
-        -->
+
+</div>
+<div class="container" id=MessagePublic1>
+        
+        <!-- Modal Delete a usuarios -->
+        <div class="modal fade" id="modelMP" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mensaje Público</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="form-group">
+                      <label for="mensajeP">Escribe aqui el mensaje público</label>
+                      <textarea class="form-control" rows="3" id=add_mensajeP value=""></textarea>
+                    </div>  
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" onclick="MessagePublic()">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+</div>
+<div class="container" id=MessagePrivate>
+        
+        <!-- Modal Delete a usuarios -->
+        <div class="modal fade" id="modelMP2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mensaje Privado</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="form-group">
+                      <label for="id_Boleta">Boleta a quien va dirigido</label>
+                      <input  type="text" id="msg_idBoleta" value=""  class="form-control"/>
+                    </div>  
+                    <div class="form-group">
+                      <label for="mensajeP">Escribe aqui el mensaje privado</label>
+                      <textarea class="form-control" rows="3" id=add_mensajePP value=""></textarea>
+                    </div>  
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" onclick="MessagePrivate()">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
 </div>
                
