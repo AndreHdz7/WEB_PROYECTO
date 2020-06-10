@@ -1,4 +1,3 @@
-
 <?php
 
     $conexion = mysqli_connect('localhost', 'root','','WEB_DBA');
@@ -35,9 +34,8 @@
       </div>
       <div class="body">
         <ul>
-          <li class="page"><a href="#">Estado de Alumnos</a></li>
+          <li class="page"><a href="obtenerUsuarios.php">Estado de Alumnos</a></li>
           <li class="page"><a href="PHP/graficas.php">Graficas</a></li>
-          <li class="page"><a href="materiasCRUD.php">Materias</a></li>
           <li class="blog dropdown"><a>Admin</a>
             <span class="selector"></span>
             <ul>
@@ -83,32 +81,34 @@
 <br>
 <br>
 <div class="container"> 
-  <h3 class="text-center">Datos de usuarios Registrados</h3>
+  <h3 class="text-center">Materias</h3>
   <table class="table table-striped">
     <thead>
         <tr>
             
-            <th scope="col">Número de boleta</th>
-            <th scope="col">Correo</th>
-            <th scope="col" class="text-center">Contraseña</th>
-            <th scope="col" class="text-right">Usuario</th>
-            <th scope="col" class="text-right"> Acción<img class="icon" src="img/config.png"  width="50"  /><a href="PHP/graficas.php"></th>
+            <th scope="col">Nombre de la materia</th>
+            <th scope="col">Profesor</th>
+            <th scope="col" class="text-center">Cupo</th>
+            <th scope="col" class="text-right">Salon</th>
+            <th scope="col" class="text-right">Horario</th>
+            <th scope="col" class="text-right"> Configurar <img class="icon" src="img/config.png"  width="50"  /><a href="PHP/graficas.php"></th>
         </tr>
     </thead>
     <tbody>
          <?php
-        $sql = "SELECT * FROM `usuarios` WHERE 1 ";
+        $sql = "SELECT * FROM `materias_disponibles` WHERE 1 ";
         $resultado=mysqli_query($conexion,$sql);
 
         while($mostrar = mysqli_fetch_array($resultado)){
          ?>
         <tr>
-            <td scope="row"><?php echo $mostrar['numBoleta']?></td>
-            <td scope="row"><?php echo $mostrar['correo']?></td>
-            <td class="text-center">********</td>
-            <td class="text-right" ><?php echo $mostrar['usuario']?></td>
+            <td scope="row"><?php echo $mostrar['materia']?></td>
+            <td scope="row"><?php echo $mostrar['profesor']?></td>
+            <td class="text-center"><?php echo $mostrar['cupo']?></td>
+            <td class="text-right" ><?php echo $mostrar['salon']?></td>
+            <td class="text-right" ><?php echo $mostrar['horario']?></td>
             <td class="text-right">
-            <button type="button" class="btn btn-primary btn-mg" data-toggle="modal" data-target="#update_user_modal">
+            <button type="button" class="btn btn-primary btn-mg" data-toggle="modal" data-target="#updateMateria">
               Editar
             </button>
             <button type="button" class="btn btn-danger btn-mg" data-toggle="modal" data-target="#modelId2">
@@ -125,7 +125,7 @@
 <div class="container">
         
         <!-- Modal Update a usuarios -->
-        <div class="modal fade" id="update_user_modal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal fade" id="updateMateria" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -157,7 +157,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="UpdateUserDetails()">Save</button>
+                <button type="button" class="btn btn-primary" onclick="UpdateMateriaDetails()">Save</button>
               </div>
             </div>
           </div>
