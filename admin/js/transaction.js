@@ -1,10 +1,10 @@
 // Add Record
 function addRecord() {
     // get values
-    var idBoleta = $("#idBoleta").val();
-    var correoAlumno = $("#correoAlumno").val();
-    var passwordAlumno = $("#passwordAlumno").val();
-    var userAlumno = $("#userAlumno").val();
+    var idBoleta = $("#add_idBoleta").val();
+    var correoAlumno = $("#add_correoAlumno").val();
+    var passwordAlumno = $("#add_passwordAlumno").val();
+    var userAlumno = $("#add_userAlumno").val();
 
     // Add record
     $.post("./ajax/addRecord.php", {
@@ -14,7 +14,7 @@ function addRecord() {
 		userAlumno: userAlumno
     }, function (data, status) {
         // close the popup
-        $("#add_new_record_modal").modal("hide");
+        $("#createUser").modal("hide");
 
         // read records again
         readRecords();
@@ -30,7 +30,12 @@ function addRecord() {
 // READ records
 function readRecords() {
     $.get("./ajax/readRecord.php", {}, function (data, status) {
-        $("#records_content").html(data);
+        $("#recarga").html(data);
+    });
+}
+function readRecordsM() {
+    $.get("./ajax/readMateria.php", {}, function (data, status) {
+        $("#recargaM").html(data);
     });
 }
 
@@ -43,11 +48,15 @@ function DeleteUser() {
         $.post("./ajax/deleteUser.php", {
                 idBoleta: idBoleta
             },
+            
             function (data, status) {
+                // hide modal popup
+                $("#modelId2").modal("hide");
                 // reload Users by using readRecords();
                 readRecords();
             }
         );
+        
     }
 }
 
@@ -107,6 +116,8 @@ function MessagePublic() {
             $("#modelMP").modal("hide");
             // reload Users by using readRecords();
             readRecords();
+            $("#add_mensajeP").val("");
+       
         }
     );
 }
@@ -125,10 +136,81 @@ function MessagePrivate() {
             $("#modelMP2").modal("hide");
             // reload Users by using readRecords();
             readRecords();
+            $("#add_mensajePP").val("");
+
+        }
+    );
+}
+function UpdateMateriaDetails() {
+    // get values
+    var idMateria = $("#update_idMateria").val();
+    var nombreA = $("#update_nombreA").val();
+    var profesor = $("#update_profesor").val();
+    var cupo = $("#update_Cupo").val();
+    var salon = $("#update_Salon").val();
+    var horario = $("#update_Horario").val();
+    // get hidden field value
+
+    // Update the details by requesting to the server using ajax
+    $.post("./ajax/updateMateriaDetails.php", {
+            idMateria: idMateria,
+            nombreA: nombreA,
+            profesor: profesor,
+            cupo: cupo,
+            salon: salon,
+            horario: horario
+        },
+        function (data, status) {
+            // hide modal popup
+            $("#updateMateria").modal("hide");
+            // reload Users by using readRecords();
+            readRecordsM();
+            $("#update_idMateria").val("");
+            $("#update_nombreA").val("");
+            $("#update_profesor").val("");
+            $("#update_Cupo").val("");
+            $("#update_Salon").val("");
+            $("#update_Horario").val("");
+        }
+    );
+}
+function AddMateriaDetails() {
+    // get values
+    var idMateria = $("#update_idMateria").val();
+    var nombreA = $("#add_nombreA").val();
+    var profesor = $("#add_profesor").val();
+    var cupo = $("#add_Cupo").val();
+    var salon = $("#add_Salon").val();
+    var horario = $("#add_Horario").val();
+    // get hidden field value
+
+    // Update the details by requesting to the server using ajax
+    $.post("./ajax/addMateriaDetails.php", {
+            idMateria: idMateria,
+            nombreA: nombreA,
+            profesor: profesor,
+            cupo: cupo,
+            salon: salon,
+            horario: horario
+        },
+        function (data, status) {
+            // hide modal popup
+            $("#createMateria").modal("hide");
+            // reload Users by using readRecords();
+            readRecordsM();
+            $("#update_idMateria").val("");
+            $("#add_nombreA").val("");
+            $("#add_profesor").val("");
+            $("#add_Cupo").val("");
+            $("#add_Salon").val("");
+            $("#add_Horario").val("");
         }
     );
 }
 
 
 
-(function ($) { $(document).ready(function(){ readRecords() }); })(jQuery); 
+(function ($) { $(document).ready(function(){ 
+                                    readRecords();
+                                    readRecordsM()}
+                                    ); })(jQuery); 

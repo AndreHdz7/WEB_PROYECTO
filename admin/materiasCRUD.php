@@ -76,60 +76,22 @@
   </div>
 </div>
 <br>
-<br>
-<br>
-<br>
-<br>
-<div class="container"> 
-  <h3 class="text-center">Materias</h3>
-  <table class="table table-striped">
-    <thead>
-        <tr>
-            
-            <th scope="col">Nombre de la materia</th>
-            <th scope="col">Profesor</th>
-            <th scope="col" class="text-center">Cupo</th>
-            <th scope="col" class="text-right">Salon</th>
-            <th scope="col" class="text-right">Horario</th>
-            <th scope="col" class="text-right"> Configurar <img class="icon" src="img/config.png"  width="50"  /><a href="PHP/graficas.php"></th>
-        </tr>
-    </thead>
-    <tbody>
-         <?php
-        $sql = "SELECT * FROM `materias_disponibles` WHERE 1 ";
-        $resultado=mysqli_query($conexion,$sql);
+<div class="container-lg">
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createMateria">Añadir registro</button>
+</div>
+					
 
-        while($mostrar = mysqli_fetch_array($resultado)){
-         ?>
-        <tr>
-            <td scope="row"><?php echo $mostrar['materia']?></td>
-            <td scope="row"><?php echo $mostrar['profesor']?></td>
-            <td class="text-center"><?php echo $mostrar['cupo']?></td>
-            <td class="text-right" ><?php echo $mostrar['salon']?></td>
-            <td class="text-right" ><?php echo $mostrar['horario']?></td>
-            <td class="text-right">
-            <button type="button" class="btn btn-primary btn-mg" data-toggle="modal" data-target="#updateMateria">
-              Editar
-            </button>
-            <button type="button" class="btn btn-danger btn-mg" data-toggle="modal" data-target="#modelId2">
-              Eliminar
-            </button>
-            </td>
-        </tr>
-        <?php
-        }
-        ?>
-    </tbody>
-  </table> 
-</div>   
+<div class="container-lg" id="recargaM"></div> 
+
+
 <div class="container">
         
-        <!-- Modal Update a usuarios -->
+        <!-- Modal Update a Materias -->
         <div class="modal fade" id="updateMateria" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Configurar datos Usuario</h5>
+                    <h5 class="modal-title">Configurar materia.</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -137,22 +99,29 @@
               <div class="modal-body">
                 <div class="container-fluid">
                     <div class="form-group">
-                      <label for="id_Boleta">Boleta</label>
-                      <input  type="text" id="update_idBoleta" value=""  class="form-control"/>
+                      <label for="id_Boleta">id Materia</label>
+                      <input  type="text" id="update_idMateria" value=""  class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label for="Correo Alumno">Correo</label>
-                      <input type="text" id="update_correoAlumno" value=""   class="form-control"/>
+                      <label for="Correo Alumno">Nombre de la unidad de aprendizaje</label>
+                      <input type="text" id="update_nombreA" value=""   class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label for="password">Password</label>
-                      <input type="password" id="update_passwordAlumno" class="form-control" value=""/>
+                      <label for="profesor">Profesor</label>
+                      <input type="text" id="update_profesor" class="form-control" value=""/>
                     </div>
                     <div class="form-group">
-                      <label for="Usuario Alumno">Usuario</label>
-                      <input type="text" id="update_userAlumno" class="form-control" value=""/> 
+                      <label for="Usuario Alumno">Cupo</label>
+                      <input type="text" id="update_Cupo" class="form-control" value=""/> 
                     </div>        
-                  Add rows here
+                    <div class="form-group">
+                      <label for="Usuario Alumno">Salon</label>
+                      <input type="text" id="update_Salon" class="form-control" value=""/> 
+                    </div>   
+                    <div class="form-group">
+                      <label for="Usuario Alumno">Horario</label>
+                      <input type="text" id="update_Horario" class="form-control" value=""/> 
+                    </div>   
                 </div>
               </div>
               <div class="modal-footer">
@@ -191,8 +160,54 @@
             </div>
           </div>
         </div>
+</div>
+<div class="container" id="addRegistros">
+        
+        <!-- Modal Update a Materias -->
+        <div class="modal fade" id="createMateria" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar materia.</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                   
+                    <div class="form-group">
+                      <label for="Correo Alumno">Nombre de la unidad de aprendizaje</label>
+                      <input type="text" id="add_nombreA" value=""   class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                      <label for="profesor">Profesor</label>
+                      <input type="text" id="add_profesor" class="form-control" value=""/>
+                    </div>
+                    <div class="form-group">
+                      <label for="Usuario Alumno">Cupo</label>
+                      <input type="text" id="add_Cupo" class="form-control" value=""/> 
+                    </div>        
+                    <div class="form-group">
+                      <label for="Usuario Alumno">Salon</label>
+                      <input type="text" id="add_Salon" class="form-control" value=""/> 
+                    </div>   
+                    <div class="form-group">
+                      <label for="Usuario Alumno">Horario</label>
+                      <input type="text" id="add_Horario" class="form-control" value=""/> 
+                    </div>   
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="AddMateriaDetails()">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
 </div>
+
 <div class="container" id=MessagePublic1>
         
         <!-- Modal Delete a usuarios -->

@@ -62,6 +62,7 @@
 <br>
 <br>
 <br>
+
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h2 class="text-center">Mensaje General</h3>
@@ -80,48 +81,14 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<div class="container"> 
-  <h3 class="text-center">Datos de usuarios Registrados</h3>
-  <table class="table table-striped">
-    <thead>
-        <tr>
-            
-            <th scope="col">Número de boleta</th>
-            <th scope="col">Correo</th>
-            <th scope="col" class="text-center">Contraseña</th>
-            <th scope="col" class="text-right">Usuario</th>
-            <th scope="col" class="text-right"> Acción<img class="icon" src="img/config.png"  width="50"  /><a href="PHP/graficas.php"></th>
-        </tr>
-    </thead>
-    <tbody>
-         <?php
-        $sql = "SELECT * FROM `usuarios` WHERE 1 ";
-        $resultado=mysqli_query($conexion,$sql);
-
-        while($mostrar = mysqli_fetch_array($resultado)){
-         ?>
-        <tr>
-            <td scope="row"><?php echo $mostrar['numBoleta']?></td>
-            <td scope="row"><?php echo $mostrar['correo']?></td>
-            <td class="text-center">********</td>
-            <td class="text-right" ><?php echo $mostrar['usuario']?></td>
-            <td class="text-right">
-            <button type="button" class="btn btn-primary btn-mg" data-toggle="modal" data-target="#update_user_modal">
-              Editar
-            </button>
-            <button type="button" class="btn btn-danger btn-mg" data-toggle="modal" data-target="#modelId2">
-              Eliminar
-            </button>
-            </td>
-        </tr>
-        <?php
-        }
-        ?>
-    </tbody>
-  </table> 
+<div class="container-lg">
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createUser">Añadir registro</button>
+</div>
+<div >
+<div class="container-lg" id="recarga"> 
+  <br>
 </div>   
+
 <div class="container">
         
         <!-- Modal Update a usuarios -->
@@ -152,7 +119,6 @@
                       <label for="Usuario Alumno">Usuario</label>
                       <input type="text" id="update_userAlumno" class="form-control" value=""/> 
                     </div>        
-                  Add rows here
                 </div>
               </div>
               <div class="modal-footer">
@@ -164,6 +130,49 @@
         </div>
 
 </div>
+
+<div class="container">
+        
+        <!-- Modal Update a usuarios -->
+        <div class="modal fade" id="createUser" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Configurar datos Usuario</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="form-group">
+                      <label for="id_Boleta">Boleta</label>
+                      <input  type="text" id="add_idBoleta" value=""  class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                      <label for="Correo Alumno">Correo</label>
+                      <input type="text" id="add_correoAlumno" value=""   class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" id="add_passwordAlumno" class="form-control" value=""/>
+                    </div>
+                    <div class="form-group">
+                      <label for="Usuario Alumno">Usuario</label>
+                      <input type="text" id="add_userAlumno" class="form-control" value=""/> 
+                    </div>        
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="addRecord()">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+</div>
+
 <div class="container">
         
         <!-- Modal Delete a usuarios -->

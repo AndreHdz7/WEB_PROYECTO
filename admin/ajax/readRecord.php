@@ -4,15 +4,21 @@
     
 
 	// Design initial table header 
-	$data = '<table class="table table-bordered table-striped">
-						<tr>
-							<th>idBoleta.</th>
-							<th>correoAlumno</th>
-							<th>passwordAlumno</th>
-							<th>userAlumno</th>
-                            <th></th>
-                            <th></th>
-						</tr>';
+
+	$data = '
+				<table class="table table-bordered table-striped" ">
+							<tr>	
+								<th scope="col">Número de boleta</th>
+								<th scope="col">Correo</th>
+								<th scope="col" class="text-center">Contraseña</th>
+								<th scope="col" class="text-right">Usuario</th>
+								<th scope="col" class="text-right"> Acción<img class="icon" src="img/config.png"  width="50"  /><a href="PHP/graficas.php"></th>
+								
+								
+							</tr>
+					</thead>
+				<tbody>	
+					';
 
 	$query = "SELECT * FROM usuarios";
 
@@ -20,7 +26,7 @@
 		exit(mysqli_error($con));
 		echo "<center><img src='../img/logo.png' id='logo'>
                   <br><h3>No encontramos informacion con los datos proporcionados</h3>
-                  <br><a href='../login.php' class='btn center'>Regresar a login</a></center>";
+                  <br><a href='../obtenerUsuarios.php' class='btn center'>Regresar </a></center>";
    
     }
 
@@ -30,12 +36,23 @@
     	$number = 1;
     	while($row = mysqli_fetch_assoc($result))
     	{
-    		$data .= '<tr>
-				<td>'.$row['numBoleta'].'</td>
-				<td>'.$row['correo'].'</td>
-				<td>'.$row['contrasea'].'</td>
-				<td>'.$row['usuario'].'</td>
-    		</tr>';
+			$data .= '
+			<tr>
+				<td scope="row">'.$row['numBoleta'].'</td>
+				<td scope="row">'.$row['correo'].'</td>
+				<td scope="row"> "********" </td>
+				<td scope="row">'.$row['usuario'].'</td>
+				<td class="text-right">
+					<button type="button" class="btn btn-primary btn-mg" data-toggle="modal" data-target="#update_user_modal">
+						Editar
+					</button>
+					<button type="button" class="btn btn-danger btn-mg" data-toggle="modal" data-target="#modelId2">
+						Eliminar
+					</button>
+				</td>
+				</tr>
+				</tbody>
+				';
     		$number++;
     	}
     }
