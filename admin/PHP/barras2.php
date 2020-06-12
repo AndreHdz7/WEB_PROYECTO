@@ -16,32 +16,45 @@ $datosY2 = json_encode($mostrar2['totalU']);
 
 
 
-<div id="graficaRUA"> 
+<div id="graficaRUA">
     <script type="text/javascript">
-        function tomarCount(json){
+        function tomarCount(json) {
             var counter = JSON.parse(json);
             return counter;
-         }
+        }
     </script>
     <script type="text/javascript">
-     datosY=tomarCount('<?php echo $datosY ?>');
-     datosY2=tomarCount('<?php echo $datosY2 ?>');
-    var trace1 = {
-			labels: ['Solicitudes totales', 'Solicitudes aceptadas'],
-			values: [parseInt(datosY),parseInt(datosY2)],
-			type: 'pie',
-			
-		}
+        datosY = tomarCount('<?php echo $datosY ?>');
+        datosY2 = tomarCount('<?php echo $datosY2 ?>');
+        var ultimateColors = [
+       
+         
+            ['rgb(255, 128, 0)', 'rgb(0, 205, 0)', 'rgb(151, 179, 100)', 'rgb(175, 49, 35)', 'rgb(36, 73, 147)'],
+            ['rgb(146, 123, 21)', 'rgb(177, 180, 34)', 'rgb(206, 206, 40)', 'rgb(175, 51, 21)', 'rgb(35, 36, 21)']
+        ];
+
+        var trace1 = {
+            labels: ['Solicitudes totales', 'Solicitudes aceptadas'],
+            values: [parseInt(datosY), parseInt(datosY2)],
+            type: 'pie',
+            marker: {
+                colors: ultimateColors[0]
+            },
+            textinfo: "label+percent",
+            insidetextorientation: "radial",
+            type: 'pie'
 
 
-    var layout = {
-			title: 'Relacion de solicitudes totales y aprobadas',
-			
-		};
+        }
+        var config = {responsive: true}
 
-		var data = [trace1];
+        var layout = {
+            title: 'Relacion de solicitudes totales y aprobadas',
 
-    Plotly.newPlot('graficaRUA', data,layout);
+        };
 
-</script>
+        var data = [trace1];
+
+        Plotly.newPlot('graficaRUA', data, layout,config);
+    </script>
 </div>
