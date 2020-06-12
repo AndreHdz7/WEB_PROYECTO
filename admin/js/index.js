@@ -1,7 +1,4 @@
-/*
-* BetterNav - Bootstrap Navbar + bigSlide (for mobile)
-* ATTENTION: CSS does not use browser prefixes, modify if you decide to use in production!
-*/
+
 $(document).ready(function() {
     /* Navbar specifics */
       $('.better-nav').each(function(){
