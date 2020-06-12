@@ -51,28 +51,28 @@ Sirve para que cuando iniciado, regrese a la pagina.
                     <!--Desde la pagina web llenamos todos los campos y por medio de un archivo js(ValidarRegistro.js) hacemos la logica-->
                     <form action="assets/PHP/Registro.php" method="POST" onsubmit="return validar();" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label>Nombre de Usuario</label>
-                            <input type="text" class="form-control" id="Usuario" name="Usuario" placeholder="Usuario">
+                            <label>Boleta</label>
+                            <input type="text" class="form-control" id="Usuario" name="Usuario" placeholder="Usuario" required>
                         </div>
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre">
+                            <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre" required>
                         </div>
                         <div class="form-group">
                             <label>Correo Electronico</label>
-                            <input type="email" class="form-control" id="Correo" name="Correo" placeholder="Correo">
+                            <input type="email" class="form-control" id="Correo" name="Correo" placeholder="Correo" required>
                         </div>
                         <div class="form-group">
                             <label>Contraseña</label>
-                            <input type="password" class="form-control" id="Contra" name="Contra" placeholder="Contraseña">
+                            <input type="password" class="form-control" id="Contra" name="Contra" placeholder="Contraseña" required>
                         </div>
                         <div class="form-group">
                             <label>Contraseña</label>
-                            <input type="password" class="form-control" id="Contra" name="ContraRep" placeholder="Repita Contraseña">
+                            <input type="password" class="form-control" id="Contra" name="ContraRep" placeholder="Repita Contraseña" required>
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox"> Acepta los terminos de uso
+                                <input type="checkbox" required> Acepta los terminos de uso
                             </label>
                         </div>
                         <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Registrar</button>

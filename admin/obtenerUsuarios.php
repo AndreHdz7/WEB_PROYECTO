@@ -12,8 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/navBar.css">
-    <link rel="text/javascript" href="js/index.js">
-    
+    <link rel="text/javascript" href="js/index.js"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     
     <title>Document</title>
@@ -89,6 +88,8 @@
   <br>
 </div>   
 
+form Action
+
 <div class="container">
         
         <!-- Modal Update a usuarios -->
@@ -105,19 +106,19 @@
                 <div class="container-fluid">
                     <div class="form-group">
                       <label for="id_Boleta">Boleta</label>
-                      <input  type="text" id="update_idBoleta" value=""  class="form-control"/>
+                      <input type="text" name="Boleta" id="update_idBoleta" value=""  class="form-control" required>
                     </div>
                     <div class="form-group">
                       <label for="Correo Alumno">Correo</label>
-                      <input type="text" id="update_correoAlumno" value=""   class="form-control"/>
+                      <input type="text" id="update_correoAlumno" value=""   class="form-control" required>
                     </div>
                     <div class="form-group">
                       <label for="password">Password</label>
-                      <input type="password" id="update_passwordAlumno" class="form-control" value=""/>
+                      <input type="password" id="update_passwordAlumno" class="form-control" value="" required>
                     </div>
                     <div class="form-group">
                       <label for="Usuario Alumno">Usuario</label>
-                      <input type="text" id="update_userAlumno" class="form-control" value=""/> 
+                      <input type="text" id="update_userAlumno" class="form-control" value="" required> 
                     </div>        
                 </div>
               </div>
@@ -147,19 +148,19 @@
                 <div class="container-fluid">
                     <div class="form-group">
                       <label for="id_Boleta">Boleta</label>
-                      <input  type="text" id="add_idBoleta" value=""  class="form-control"/>
+                      <input  type="text" name="Boleta" id="add_idBoleta" value=""  class="form-control" required>
                     </div>
                     <div class="form-group">
                       <label for="Correo Alumno">Correo</label>
-                      <input type="text" id="add_correoAlumno" value=""   class="form-control"/>
+                      <input type="text" id="add_correoAlumno" value=""   class="form-control" required>
                     </div>
                     <div class="form-group">
                       <label for="password">Password</label>
-                      <input type="password" id="add_passwordAlumno" class="form-control" value=""/>
+                      <input type="password" id="add_passwordAlumno" class="form-control" value="" required>
                     </div>
                     <div class="form-group">
                       <label for="Usuario Alumno">Usuario</label>
-                      <input type="text" id="add_userAlumno" class="form-control" value=""/> 
+                      <input type="text" id="add_userAlumno" class="form-control" value="" required> 
                     </div>        
                 </div>
               </div>
@@ -189,7 +190,7 @@
                 <div class="container-fluid">
                     <div class="form-group">
                       <label for="id_Boleta">Boleta</label>
-                      <input  type="text" id="delete_idBoleta" value=""  class="form-control"/>
+                      <input  type="text" id="delete_idBoleta" value=""  class="form-control" required>
                     </div>  
                 </div>
               </div>
@@ -247,7 +248,7 @@
                 <div class="container-fluid">
                     <div class="form-group">
                       <label for="id_Boleta">Boleta a quien va dirigido</label>
-                      <input  type="text" id="msg_idBoleta" value=""  class="form-control"/>
+                      <input  type="text" id="msg_idBoleta" value=""  class="form-control" required>
                     </div>  
                     <div class="form-group">
                       <label for="mensajeP">Escribe aqui el mensaje privado</label>
