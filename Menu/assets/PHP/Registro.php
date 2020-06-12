@@ -142,6 +142,7 @@
                 $('.tooltipped').tooltip({delay: 50});
             }
         );
+    </script>
 </body>
 </html>
 
