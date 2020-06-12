@@ -38,6 +38,11 @@ function readRecordsM() {
         $("#recargaM").html(data);
     });
 }
+function readMessage() {
+    $.get("./ajax/readMsg.php", {}, function (data, status) {
+        $("#recargaMsg").html(data);
+    });
+}
 
 
 function DeleteUser() {
@@ -54,6 +59,28 @@ function DeleteUser() {
                 $("#modelId2").modal("hide");
                 // reload Users by using readRecords();
                 readRecords();
+                $("#delete_idBoleta").val("");
+            }
+        );
+        
+    }
+}
+
+function DeleteMateria() {
+
+    var idMateria = $("#delete_idMateria").val();
+    var conf = confirm("¿Está seguro, realmente desea eliminar el registro?");
+    if (conf == true) {
+        $.post("./ajax/deleteMateria.php", {
+                idMateria: idMateria
+            },
+            
+            function (data, status) {
+                // hide modal popup
+                $("#modelDelete").modal("hide");
+                // reload Users by using readRecords();
+                readRecordsM();
+                $("#delete_idMateria").val("");
             }
         );
         
@@ -115,7 +142,7 @@ function MessagePublic() {
             // hide modal popup
             $("#modelMP").modal("hide");
             // reload Users by using readRecords();
-            readRecords();
+            readMessage();
             $("#add_mensajeP").val("");
        
         }
@@ -137,6 +164,7 @@ function MessagePrivate() {
             // reload Users by using readRecords();
             readRecords();
             $("#add_mensajePP").val("");
+            $("#msg_idBoleta").val("");
 
         }
     );
@@ -212,5 +240,6 @@ function AddMateriaDetails() {
 
 (function ($) { $(document).ready(function(){ 
                                     readRecords();
-                                    readRecordsM()}
+                                    readRecordsM();
+                                    readMessage()}
                                     ); })(jQuery); 
