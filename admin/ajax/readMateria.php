@@ -50,8 +50,8 @@
 					<button type="button" class="btn btn-primary btn-mg" data-toggle="modal" data-target="#updateMateria">
 						Editar
 					</button>
-					<button type="button" class="btn btn-danger btn-mg" data-toggle="modal" data-target="#modelId3">
-						Eliminar
+					<button type="button" class="btn btn-danger btn-mg" data-toggle="modal" data-target="#modelDelete">
+						Eliminar :0
 					</button>
 				</td>
 				</tr>
