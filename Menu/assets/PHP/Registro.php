@@ -35,10 +35,10 @@
         {
            // $passcrypt = crypt($pass,'$5$rounds=5000$usesomesillystringforsalt$');
           //$rev = strrev($pass);
-            $conexion = new PDO('mysql: host=localhost; dbname=proyectoweb; charset=utf8','root','');   
+            $conexion = new PDO('mysql: host=localhost; dbname=web_dba; charset=utf8','root','');   
             $ID=2375;  //falta el auto-incrementable
             $peticion = "INSERT INTO usuarios(Usuario,Correo,Contrase,Nombre,Verificar,ID) VALUES ('$usuario','$correo','$contra','$nombre',0,$ID)";
-                
+            //$peticion = "INSERT INTO usuarios(numBoleta,correo,contrasea,usuario) VALUES ('$Usuario','$correo','$contra','$nombre')";    
                 $resultados= $conexion->query($peticion);
                 
                 echo "<br><center><h3>REGISTRO EXITOSO!!!</h3></center>";
@@ -62,7 +62,7 @@
                     $headers.= "Content-type: text/html; charset= iso-8859-1;\r\n";
                     $headers.= "From: Encuentro de ingenieria <no-responder@encuentroii.com>\r\n";
 
-                    $exito = mail($correo,"Verificacion de Cuenta",$coment,$headers);
+              //      $exito = mail($correo,"Verificacion de Cuenta",$coment,$headers);
         }
 
         function verificaCorreo($correo)
