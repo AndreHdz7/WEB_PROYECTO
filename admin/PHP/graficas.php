@@ -31,7 +31,9 @@
   </div>
   <div class="body">
     <ul>
-      <li class="page"><a href="../obtenerUsuarios.php">Estado de Alumnos</a></li>
+      <li class="page"><a href="../obtenerUsuarios.html">Estado de Alumnos</a></li>
+      <li class="page"><a href="../materiasCRUD.html">Materias</a></li>
+     
       <li class="blog active dropdown"><a href="#">Admin</a>
         <span class="selector"></span>
         <ul>
