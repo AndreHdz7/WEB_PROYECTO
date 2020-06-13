@@ -42,7 +42,7 @@ $DatoUser = json_encode($mostrarn['totalU']);
             ['rgb(146, 123, 21)', 'rgb(177, 180, 34)', 'rgb(206, 206, 40)', 'rgb(175, 51, 21)', 'rgb(35, 36, 21)']
         ];
         var trace1 = {
-            labels: ['Usuarios','Usuarios con Registro'],
+            labels: ['Usuarios','Usuarios Registro Pendiente'],
             values: [parseInt(datosY), parseInt(datosY2)],
             type: 'pie',
             marker: {
