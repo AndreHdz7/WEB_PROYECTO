@@ -31,15 +31,11 @@ $topArrKey1 = (array_keys($arrC, $top1));
 $topArrKey2 = (array_keys($arrC, $top2));
 $topArrKey3 = array_keys($arrC, $top3);
 
-/*
-print_r($topArrKey1[0]);
-print_r($topArrKey2[0]);
-print_r($topArrKey3[0]);
-*/
 
 
 
-require_once "conexion.php";
+
+
 $conexion2 = conexion();
 
 
@@ -103,12 +99,7 @@ $datosYF = json_encode($arrY);
     <script type="text/javascript">
         datosYFinal = crearCadenaBarras('<?php echo $datosYF ?>');
         datosXFinal = crearCadenaBarras('<?php echo $datosXF ?>');
-        var ultimateColors = [
-
-
-            ['rgb(51, 251, 51)', 'rgb(51, 255, 255)', 'rgb(151, 179, 100)', 'rgb(175, 49, 35)', 'rgb(36, 73, 147)'],
-            ['rgb(146, 123, 21)', 'rgb(177, 180, 34)', 'rgb(206, 206, 40)', 'rgb(175, 51, 21)', 'rgb(35, 36, 21)']
-        ];
+        
 
 
         var data = [{
