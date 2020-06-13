@@ -7,13 +7,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
   <link rel="stylesheet" href="css/navBar.css">
   <link rel="text/javascript" href="js/index.js">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <script src="../js/ValidarRegistroUpdate.js"></script>
-  <script src="../js/ValidarRegistroDelete.js"></script>
+  <script src="js/ValidarRegistroUpdate.js""></script>
+  <script src="js/ValidarRegistroDelete.js"></script>
   <link rel="stylesheet" href="css/containerGraficas.css">
   <link rel="stylesheet" href="css/navBar.css">
   <link rel="stylesheet" href="css/contenedorMT.css">
@@ -103,7 +104,7 @@
           <div class="modal-body">
             <div class="container-fluid">
               <div class="form-group">
-                <form onsubmit="return validarupdate();">
+                <form method="POST" onsubmit="return validarupdate();" action="sube.php"></form>
                   <label for="id_Boleta">Boleta</label>
                   <input type="text" name="Boleta" id="update_idBoleta" value="" class="form-control" required>
               </div>
@@ -118,14 +119,15 @@
               <div class="form-group">
                 <label for="Usuario Alumno">Usuario</label>
                 <input type="text" id="update_userAlumno" class="form-control" value="" required>
-                </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" onclick="validarupdate(); UpdateUserDetails()">Save</button>
+                </div>
+              </form>
               </div>
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="UpdateUserDetails()">Save</button>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -148,7 +150,7 @@
           <div class="modal-body">
             <div class="container-fluid">
               <div class="form-group">
-                <form onsubmit="return validarupdate();">
+                <form method="POST" onsubmit="return validarupdate();" action="sube.php">
                   <label for="id_Boleta">Boleta</label>
                   <input type="text" name="Boleta" id="add_idBoleta" value="" class="form-control" required>
               </div>
@@ -163,14 +165,15 @@
               <div class="form-group">
                 <label for="Usuario Alumno">Usuario</label>
                 <input type="text" id="add_userAlumno" class="form-control" value="" required>
-                </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" onclick="validarupdate(); UpdateUserDetails()">Save</button>
+                </div>
+              </form>
               </div>
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="addRecord()">Save</button>
-          </div>
+         
         </div>
       </div>
     </div>
@@ -201,7 +204,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-warning" onclick="DeleteUser()">Save</button>
+            <button type="button" class="btn btn-warning" onclick="validardelete(); DeleteUser()">Save</button>
           </div>
         </div>
       </div>
