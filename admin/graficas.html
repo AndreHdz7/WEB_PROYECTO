@@ -14,7 +14,7 @@
   <link rel="stylesheet" type="text/css" href="graficas/librerias/bootstrap/css/bootstrap.css">
   <script src="graficas/librerias/jquery-3.5.1.min.js"></script>
   <script src="graficas/librerias/plotly-latest.min.js"></script>
-
+  <link rel="stylesheet" href="css/contenedorMT.css">
 </head>
 
 <body id="bodyC">
@@ -42,9 +42,7 @@
             <li class="blog active dropdown"><a>Admin</a>
               <span class="selector"></span>
               <ul>
-                <li><a href="#">Mensaje general</a></li>
-                <li><a href="#">Salir</a></li>
-                <li><a href="#">Mensaje privado</a></li>
+                 <li><a href="#">Salir</a></li>
               </ul>
             </li>
 
@@ -53,11 +51,30 @@
         <div class="toggle">
           <a href="#navbar-slide">
             <i class="fa fa-bars" aria-hidden="true"></i>
+
           </a>
         </div>
       </div>
     </nav>
-    <br><br><br><br><br><br><br><br><br>
+   <br><br><br><br>
+    <div class="opacity2">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-sm-12">
+               <i class="fas fa-solar-panel    ">
+                
+                  <h1>Mensaje General</h1>
+               </i>
+
+               <div class="opacity3" id="recargaMsg">
+
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </div>
+    <br><br><br><br><br>
 
     <div class="container">
       <div class="row">
@@ -108,8 +125,12 @@
       </div>
     </div>
 
-    <script type="text/javascript" src="js/graficas.js"></script>
+   
   </div>
+ 
+  
+  <script type="text/javascript" src="js/graficas.js"></script>
+  <script type="text/javascript" src="js/transaction.js"></script>
 </body>
 
 </html>
