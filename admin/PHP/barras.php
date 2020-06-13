@@ -19,6 +19,7 @@ for ($i = 0; $i < $mostrar['total']; $i++) {
 
 $arrXX = array();
 $arrYY = array();
+$arrXfinal = array();
 $conexion2 = conexion();
 $conexion3 = conexion();
 //print_r($mostrar['total']);
@@ -35,7 +36,16 @@ for($i = 0; $i< $total; $i++){
     $resultQ2 = mysqli_query($conexion2, $QUERY2);
     mysqli_data_seek($resultQ2,0);
     $row2 = mysqli_fetch_row($resultQ2);
-    array_push($arrYY,$row2[0]);
+    array_push($arrXfinal,$row2[0]);
+    
+    $sqlCont = "SELECT count(*) as totalM from materia_seleccionadas  where idMateria_seleccionadas= $arrXX[$i]";
+    $resultCont = mysqli_query($conexion2, $sqlCont);
+    $mostrarn1 = mysqli_fetch_assoc($resultCont);
+    //echo $mostrarn['totalM'];
+    array_push($arrYY, intval($mostrarn1['totalM']));
+
+
+
 }
 /*
 for ($i=0; $i< $mostrar['total'];$i++) {
@@ -57,7 +67,7 @@ for ($i=0; $i< $mostrar['total'];$i++) {
 
 //print_r($arrYY);
 
-$datosXFF = json_encode($arrXX);
+$datosXFF = json_encode($arrXfinal);
 $datosYFF = json_encode($arrYY);
 
 ?>
