@@ -63,12 +63,7 @@
     
     datosY=crearCadenaBarras('<?php echo $datosY ?>');
     datosX=crearCadenaBarras('<?php echo $datosX ?>');
-    var ultimateColors = [
-       
-         
-       ['rgb(51, 251, 51)', 'rgb(51, 255, 255)', 'rgb(151, 179, 100)', 'rgb(175, 49, 35)', 'rgb(36, 73, 147)'],
-       ['rgb(146, 123, 21)', 'rgb(177, 180, 34)', 'rgb(206, 206, 40)', 'rgb(175, 51, 21)', 'rgb(35, 36, 21)']
-   ];
+    
 
 
         var data = [
