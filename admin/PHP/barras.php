@@ -47,21 +47,7 @@ for($i = 0; $i< $total; $i++){
 
 
 }
-/*
-for ($i=0; $i< $mostrar['total'];$i++) {
-    require_once "conexion.php";
-    $conexionFFF = conexion();
-    $topFF = array_pop($arr);
-    $topArrKey1FF = (array_keys($arrC, $topFF));
-    $sqlNombreMateria1FF = "SELECT materia,profesor from materias_disponibles where idMateria= '$topArrKey1FF[0]' ";
-    $resultFFF = mysqli_query($conexionFFF, $sqlNombreMateria1FF);
-    $extraido1FF = mysqli_fetch_array($resultFFF);
-    array_push($arrXX, $extraido1FF[0]);
-    array_push($arrYY, $topFF);
-    mysqli_close(conexion());
-    
-}
-*/
+
 
 //print_r($arrXX);
 
@@ -106,12 +92,7 @@ $datosYFF = json_encode($arrYY);
         }];
         var layout2 = {
             title: 'Relación materias/registros',
-            xaxis: {
-                title: ''
-            },
-            yaxis: {
-                title: ''
-            }
+            
         };
         var config = {
             responsive: true
