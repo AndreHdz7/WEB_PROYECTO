@@ -31,7 +31,7 @@ debemos hacerlo .php
 	<link rel="stylesheet"  type="text/css" href="css/stilo.css">
 	<link rel="stylesheet"  type="text/css" href="css/LetrasStilo.css">
 	<script type='text/javascript' src='js/CargaArchivo.js'></script>
-
+	<script src="js/ValidarRegistroLogin"></script>
 	
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,7 +58,7 @@ debemos hacerlo .php
 
 	<div class="container">
 		<div class="login-content" style="width:62%; height:45%;">
-			<form action="PHP/InicioSesion.php" method="POST" >
+			<form onsubmit="return validarlogin();" action="PHP/InicioSesion.php" method="POST" >
 				<img src="img/avatar.svg" >
 				<h2 class="title">Sobrecupos</h2>
 				<div class="input-div one">

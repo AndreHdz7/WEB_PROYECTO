@@ -27,7 +27,7 @@
             else
                 menu("../actividades.php","#!","#!","../comite.php","../login.php","../sing_in.php");
             */
-    ?>
+    ?> @
     <section>
         <?php
     
@@ -111,7 +111,7 @@
      echo "<section id='logo'>
                     <img src='../img/logo.png' id='logo'>\";
           </section>";
-        if (ingresa_datos($_POST["Nombre"],$_POST["Usuario"],$_POST["Correo"],$_POST["Contra"])){
+        if (ingresa_datos($_POST["Usuario"],$_POST["numBoleta"],$_POST["Correo"],$_POST["Contra"])){
             echo "<center><h4>Se ha registrado exitosamente</h4></center>";
         }else {
             echo "<center><h3>ERROR!!!</h3></center>";

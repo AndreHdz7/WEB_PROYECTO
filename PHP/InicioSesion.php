@@ -42,13 +42,13 @@ try {
             } else {
                 session_start();
                 $_SESSION["login"] = 1;
-                header("location:../login.php");
+                header("location:/login.html");
             }
         }
     }else{
         echo "<center><img src='../img/logo.png' id='logo'>
                   <br><h3>No encontramos informacion con los datos proporcionados</h3>
-                  <br><a href='../login.php' class='btn center'>Regresar a login</a></center>";
+                  <br><a href='../login.html' class='btn center'>Regresar a login</a></center>";
     }
 
 } catch (Exception $e) {

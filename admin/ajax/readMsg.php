@@ -16,7 +16,6 @@
 		echo "<center><img src='../img/logo.png' id='logo'>
                   <br><h3>No hay mensajes generales  que mostrar</h3>
                   <br><a href='../materiasCRUD.php' class='btn center'>Regresar </a></center>";
-   
     }
     echo $mostrarMess['mensaje_publico'];
 

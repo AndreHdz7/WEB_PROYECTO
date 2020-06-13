@@ -1,15 +1,14 @@
-function validar(){
+function validarupdate(){
 
 	var NumBoleta,usuario,correo,contra,contraRep;
-	NumBoleta 	= 	document.getElementById("numBoleta").value;
-	usuario 	= 	document.getElementById("Usuario").value;
-	correo 		=	document.getElementById("Correo").value;
-	contra 		= 	document.getElementById("Contra").value;
-	contraRep 	= 	document.getElementById("ContraRep").value;
+	NumBoleta 	= 	document.getElementById("update_idBoleta").value;
+	usuario 	= 	document.getElementById("update_userAlumno").value;
+	correo 		=	document.getElementById("update_correoAlumno").value;
+	contra 		= 	document.getElementById("update_passwordAlumno").value;
 	var expresionCorreo = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	var expresionName = /^[a-zA-Z ]+$/;
 	var expresionBoleta = /^[2]+[0]+[1|2]+[1|2|3|4|5|6|7|8|9]+[6]+[3]+[0]+[0-9]+$/;
-	if(NumBoleta === "" ||usuario === "" ||correo === "" ||contra === "" ||contraRep === "" )
+	if(NumBoleta === "" ||usuario === "" ||correo === "" ||contra === "" )
 	{
 		alert("Existen campos vacíos");
 		return false;
@@ -55,14 +54,6 @@ function validar(){
 	}
 	else if (contra.length > 20) {
 		alert('La contraseña es muy larga, no la vas a recordar');
-		return false;
-	}
-	else if (contraRep.length > 20) {
-		alert('La contraseña es muy larga, no la vas a recordar');
-		return false;	
-	}
-	else if (contra.localeCompare(contraRep)!=0) {
-		alert('Las contraseñas no coinciden');
 		return false;
 	}
 	else if (isNaN(NumBoleta))

@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/navBar.css">
     <link rel="text/javascript" href="js/index.js"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="../js/ValidarRegistroUpdate.js"></script>
+    <script src="../js/ValidarRegistroDelete.js"></script>
     
     <title>Document</title>
 </head>
@@ -90,6 +92,7 @@
               <div class="modal-body">
                 <div class="container-fluid">
                     <div class="form-group">
+                      <form onsubmit="return validarupdate();">
                       <label for="id_Boleta">Boleta</label>
                       <input type="text" name="Boleta" id="update_idBoleta" value=""  class="form-control" required>
                     </div>
@@ -104,7 +107,8 @@
                     <div class="form-group">
                       <label for="Usuario Alumno">Usuario</label>
                       <input type="text" id="update_userAlumno" class="form-control" value="" required> 
-                    </div>        
+                    </form>   
+                    </div>       
                 </div>
               </div>
               <div class="modal-footer">
@@ -132,6 +136,7 @@
               <div class="modal-body">
                 <div class="container-fluid">
                     <div class="form-group">
+                      <form onsubmit="return validarupdate();">
                       <label for="id_Boleta">Boleta</label>
                       <input  type="text" name="Boleta" id="add_idBoleta" value=""  class="form-control" required>
                     </div>
@@ -146,6 +151,7 @@
                     <div class="form-group">
                       <label for="Usuario Alumno">Usuario</label>
                       <input type="text" id="add_userAlumno" class="form-control" value="" required> 
+                    </form>
                     </div>        
                 </div>
               </div>
@@ -174,8 +180,10 @@
               <div class="modal-body">
                 <div class="container-fluid">
                     <div class="form-group">
+                      <form onsubmit="return validardelete();">
                       <label for="id_Boleta">Boleta</label>
                       <input  type="text" id="delete_idBoleta" value=""  class="form-control" required>
+                      </form>
                     </div>  
                 </div>
               </div>
