@@ -75,6 +75,7 @@ function DeleteMateria() {
 
     var conf = confirm("¿Está seguro, realmente desea eliminar el registro?");
     if (deleteMateria() == true)
+    {
     if (conf == true) {
         $.post("./ajax/deleteMateria.php", {
             idMateria: idMateria
@@ -88,7 +89,7 @@ function DeleteMateria() {
                 $("#delete_idMateria").val("");
             }
         );
-
+    }
     }
 
 }
