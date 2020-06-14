@@ -31,7 +31,7 @@ function addRecord() {
 function readRecords() {
     $.get("./ajax/readRecord.php", {}, function (data, status) {
         $("#recarga").html(data);
-    });0
+    }); 0
 }
 function readRecordsM() {
     $.get("./ajax/readMateria.php", {}, function (data, status) {
@@ -119,23 +119,21 @@ function UpdateUserDetails() {
     var passwordAlumno = $("#update_passwordAlumno").val();
     var userAlumno = $("#update_userAlumno").val();
 
-    // get hidden field value
-
-    // Update the details by requesting to the server using ajax
-    $.post("./ajax/updateUserDetails.php", {
-        idBoleta: idBoleta,
-        correoAlumno: correoAlumno,
-        passwordAlumno: passwordAlumno,
-        userAlumno: userAlumno
-    },
-        function (data, status) {
-            // hide modal popup
-            $("#update_user_modal").modal("hide");
-            // reload Users by using readRecords();
-            readRecords();
-        }
-    );
-
+    if (validarupdate() == true) {
+        $.post("./ajax/updateUserDetails.php", {
+            idBoleta: idBoleta,
+            correoAlumno: correoAlumno,
+            passwordAlumno: passwordAlumno,
+            userAlumno: userAlumno
+        },
+            function (data, status) {
+                // hide modal popup
+                $("#update_user_modal").modal("hide");
+                // reload Users by using readRecords();
+                readRecords();
+            }
+        );
+    }
 }
 function MessagePublic() {
     // get values
@@ -185,7 +183,7 @@ function UpdateMateriaDetails() {
     var salon = $("#update_Salon").val();
     var horario = $("#update_Horario").val();
     // get hidden field value
-    if(validarupdate()==true){
+
     // Update the details by requesting to the server using ajax
     $.post("./ajax/updateMateriaDetails.php", {
         idMateria: idMateria,
@@ -208,7 +206,7 @@ function UpdateMateriaDetails() {
             $("#update_Horario").val("");
         }
     );
-    }
+
 }
 function AddMateriaDetails() {
     // get values
@@ -262,7 +260,7 @@ function validardelete() {
     var NumBoleta = $("#delete_idBoleta").val();
     var expresionBoleta = /^[2]+[0]+[1|2]+[1|2|3|4|5|6|7|8|9]+[6]+[3]+[0]+[0-9]+$/;
 
-    if(NumBoleta === "") {
+    if (NumBoleta === "") {
         alert("Existen campos vacíos");
         return false;
     }
@@ -282,11 +280,11 @@ function validardelete() {
     else if (isNaN(NumBoleta)) {
         alert('No es numero de Boleta Valido');
         return false;
-    }else if(exist==false){
+    } else if (exist == false) {
         alert("No existe el numero de boleta");
         return false;
-    } 
-    
+    }
+
     else {
         return true;
     }
@@ -294,71 +292,62 @@ function validardelete() {
 
 }
 
-function validarupdate(){
+function validarupdate() {
 
-	var NumBoleta,usuario,correo,contra;
-	//NumBoleta 	= 	$("#delete_idBoleta").val();
-	//usuario 	= 	document.getElementById("add_userAlumno").value;
-	//correo 		=	document.getElementById("add_correoAlumno").value;
-	//contra 		= 	document.getElementById("add_passwordAlumno").value;
-	var expresionCorreo = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-	var expresionName = /^[a-zA-Z ]+$/;
-	var expresionBoleta = /^[2]+[0]+[1|2]+[1|2|3|4|5|6|7|8|9]+[6]+[3]+[0]+[0-9]+$/;
-	if(NumBoleta === "" ||usuario === "" ||correo === "" ||contra === "" )
-	{
-		alert("Existen campos vacíos");
-		return false;
-	}
-	else if (NumBoleta.length>15)
-	{
-		alert("El Numero de Boleta no es valido");
-		return false;
-	}
-	else if (NumBoleta.length<10)
-	{
-		alert("El Numero de Boleta no es valido");
-		return false;
-	}
-	else if(!expresionBoleta.test(NumBoleta))
-	{
-		alert("No es un numero de Boleta Valido");
-		return false;
-	}
-	else if (usuario.length>30)
-	{
-		alert('El nombre es muy largo');
-		return false;
-	}
-	else if(usuario.length<3)
-	{
-		alert('El nombre es muy corto');
-		return false;
-	}
-	else if(!expresionName.test(usuario))
-	{
-		alert("El Nombre no es valido");
-		return false;
-	}
-	else if (correo.length > 30){
-		alert('El correo es muy largo, por favor intenta con otro');
-		return false;
-	}
-	else if(!expresionCorreo.test(correo))
-	{
-		alert("El correo no es valido");
-		return false;
-	}
-	else if (contra.length > 20) {
-		alert('La contraseña es muy larga, no la vas a recordar');
-		return false;
-	}
-	else if (isNaN(NumBoleta))
-	{
-		alert('No es numero de Boleta Valido');
-		return false;
-	}
-	else{
-		return true;
+    var NumBoleta = $("#update_idBoleta").val();
+    var correo = $("#update_correoAlumno").val();
+    var contra = $("#update_passwordAlumno").val();
+    var usuario = $("#update_userAlumno").val();
+
+    var expresionCorreo = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var expresionName = /^[a-zA-Z ]+$/;
+    var expresionBoleta = /^[2]+[0]+[1|2]+[1|2|3|4|5|6|7|8|9]+[6]+[3]+[0]+[0-9]+$/;
+    if (NumBoleta === "" || usuario === "" || correo === "" || contra === "") {
+        alert("Existen campos vacíos");
+        return false;
+    }
+    else if (NumBoleta.length > 15) {
+        alert("El Numero de Boleta no es valido");
+        return false;
+    }
+    else if (NumBoleta.length < 10) {
+        alert("El Numero de Boleta no es valido");
+        return false;
+    }
+    else if (!expresionBoleta.test(NumBoleta)) {
+        alert("No es un numero de Boleta Valido");
+        return false;
+    }
+    else if (usuario.length > 30) {
+        alert('El nombre es muy largo');
+        return false;
+    }
+    else if (usuario.length < 3) {
+        alert('El nombre es muy corto');
+        return false;
+    }
+    else if (!expresionName.test(usuario)) {
+        alert("El Nombre no es valido");
+        return false;
+    }
+    else if (correo.length > 30) {
+        alert('El correo es muy largo, por favor intenta con otro');
+        return false;
+    }
+    else if (!expresionCorreo.test(correo)) {
+        alert("El correo no es valido");
+        return false;
+    }
+    else if (contra.length > 20) {
+        alert('La contraseña es muy larga, no la vas a recordar');
+        return false;
+    }
+    else if (isNaN(NumBoleta)) {
+        alert('No es numero de Boleta Valido');
+        return false;
+    }
+    else {
+        return true;
     }
 }
 

@@ -3,7 +3,7 @@
     include("db_connection.php");
 // check request
 //if(isset($_POST))
-if(isset(!empty($_POST['userAlumno']) && !empty($_POST['correoAlumno']) && !empty($_POST['passwordAlumno']) && !empty($_POST['idBoleta']))
+if((isset($_POST['userAlumno'])!= "") && (isset($_POST['correoAlumno'])!= "") && (isset($_POST['passwordAlumno'])!= "") && (isset($_POST['idBoleta'])!= ""))
 {
         
     // get values
