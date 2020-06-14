@@ -353,11 +353,11 @@ function validarupdate() {
 
 function validarMateria() {
     var idMateria = $("#update_idMateria").val();
-    var nombreA = $("#add_nombreA").val();
-    var profesor = $("#add_profesor").val();
-    var cupo = $("#add_Cupo").val();
-    var salon = $("#add_Salon").val();
-    var horario = $("#add_Horario").val();
+    var nombreA = $("#update_nombreA").val();
+    var profesor = $("#update_profesor").val();
+    var cupo = $("#update_Cupo").val();
+    var salon = $("#update_Salon").val();
+    var horario = $("#update_Horario").val();
     var expresionName = /^[a-zA-Z ]+$/;
     var expresioncupo = /^[2|3]+[0|1|2|3|4|5|6]+$/;
     var expresionsalon =/^[1|2]+[0|1|2|]+[0|1]+[0-9]$/;
@@ -370,55 +370,55 @@ function validarMateria() {
         return false;
     }
     else if (nombreA.length > 30) {
-        alert("La Materia no es valido");
+        alert("La Materia no es valido, campo muy largo");
         return false;
     }
     else if (nombreA.length < 2) {
-        alert("La Materia no es valido");
+        alert("La Materia no es valido, campo muy pequeño");
         return false;
     }
     else if (!expresionName.test(nombreA)) {
-        alert("La Materia no es valido");
+        alert("La Materia no es valido, expr");
         return false;
     }
     else if (profesor.length > 30) {
-        alert("El profesor no es valido");
+        alert("El profesor no es valido, nombre muy largo");
         return false;
     }
     else if (profesor.length < 3) {
-        alert("El profesor no es valido");
+        alert("El profesor no es valido, nombre muy corto");
         return false;
     }
     else if (!expresionName.test(profesor)) {
-        alert("El profesor no es valido");
+        alert("El profesor no es valido, expr profesor");
         return false;
     }
-    else if (cupo.length > 3) {
-        alert("El cupo no es valido");
+    else if (cupo.length > 30) {
+        alert("El cupo no es valido, cupo mayor a 30");
         return false;
     }
-    else if (!expresioncupo.test(nombreA)) {
-        alert("La Materia no es valido");
+    else if (!expresioncupo.test(cupo)) {
+        alert("El cupo no es valido, cupo expr");
         return false;
     }
     else if (salon.length > 4) {
-        alert("El salon no es valido");
+        alert("El salon no es valido, tamaño");
         return false;
     }
-    else if (!expresionsalon.test(profesor)) {
-        alert("El salon no es valido");
+    else if (expresionsalon.test(salon)) {
+        alert("El salon no es valido, expr salon");
         return false;
     }
     else if (horario.length > 10) {
-        alert("El horario no es valido");
+        alert("El horario no es valido, horario tamaño");
         return false;
     }
     else if (isNaN(idMateria)) {
-        alert("El id de la Materia no es valido");
+        alert("El id de la Materia no es valido, not numbrerl  en id");
         return false;
     }
-    else if (isNaN(salon)) {
-        alert("El salon no es valido");
+    else if (!isNaN(salon)) {
+        alert("El salon no es valido, not number salon");
         return false;
     }
     else {
