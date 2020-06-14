@@ -17,9 +17,10 @@ if(isset($_POST['idMateria'])!= "")
     $query = "DELETE FROM materias_disponibles WHERE materias_disponibles.idMateria = '$user_id'";
     //$query = " DELETE FROM `usuarios` WHERE `usuarios`.`numBoleta` = \'2016630444\'"?";
     //DELETE FROM `usuarios` WHERE `usuarios`.`numBoleta` = \'2016630444\'"?
-    $result = mysqli_query($con, $quer);
+    //$result = mysqli_query($con, $quer);
     if (!$result = mysqli_query($con, $query)) {
-        exit(mysqli_error($con));
+       // echo 'alert(NO EXISTE EL USUARIO CON ESA BOLETA)';
+        (mysqli_error($con));
     }
 }
 ?>
