@@ -48,7 +48,7 @@ function readMessage() {
 function DeleteUser() {
 
     var idBoleta = $("#delete_idBoleta").val();
-    if (validardelete() == true) {
+    if (validardelete() === true) {
         var conf = confirm("¿Está seguro, realmente desea eliminar el registro?");
         if (conf == true) {
             $.post("./ajax/deleteUser.php", {
@@ -114,12 +114,12 @@ function GetUserDetails(idBoleta) {
 
 function UpdateUserDetails() {
     // get values
-    var idBoleta = $("#update_idBoleta").val();
-    var correoAlumno = $("#update_correoAlumno").val();
-    var passwordAlumno = $("#update_passwordAlumno").val();
-    var userAlumno = $("#update_userAlumno").val();
+    var idBoleta = $("#add_idBoleta").val();
+    var correoAlumno = $("#add_correoAlumno").val();
+    var passwordAlumno = $("#add_passwordAlumno").val();
+    var userAlumno = $("#add_userAlumno").val();
 
-    if (validarupdate() == true) {
+    if (validarupdate() === true) {
         $.post("./ajax/updateUserDetails.php", {
             idBoleta: idBoleta,
             correoAlumno: correoAlumno,
@@ -183,16 +183,16 @@ function UpdateMateriaDetails() {
     var salon = $("#update_Salon").val();
     var horario = $("#update_Horario").val();
     // get hidden field value
-
-    // Update the details by requesting to the server using ajax
-    $.post("./ajax/updateMateriaDetails.php", {
-        idMateria: idMateria,
-        nombreA: nombreA,
-        profesor: profesor,
-        cupo: cupo,
-        salon: salon,
-        horario: horario
-    },
+    if (validarMateria() === true) {
+        // Update the details by requesting to the server using ajax
+        $.post("./ajax/updateMateriaDetails.php", {
+          idMateria: idMateria,
+          nombreA: nombreA,
+           profesor: profesor,
+            cupo: cupo,
+            salon: salon,
+           horario: horario
+        },
         function (data, status) {
             // hide modal popup
             $("#updateMateria").modal("hide");
@@ -205,7 +205,8 @@ function UpdateMateriaDetails() {
             $("#update_Salon").val("");
             $("#update_Horario").val("");
         }
-    );
+        );
+    }
 
 }
 function AddMateriaDetails() {
@@ -217,7 +218,7 @@ function AddMateriaDetails() {
     var salon = $("#add_Salon").val();
     var horario = $("#add_Horario").val();
     // get hidden field value
-
+    if (validarMateria() === true) {
     // Update the details by requesting to the server using ajax
     $.post("./ajax/addMateriaDetails.php", {
         idMateria: idMateria,
@@ -240,6 +241,7 @@ function AddMateriaDetails() {
             $("#add_Horario").val("");
         }
     );
+    }
 }/*
 function stateRegUserByBoleta(numBoleta){
    var result=2;
@@ -294,10 +296,10 @@ function validardelete() {
 
 function validarupdate() {
 
-    var NumBoleta = $("#update_idBoleta").val();
-    var correo = $("#update_correoAlumno").val();
-    var contra = $("#update_passwordAlumno").val();
-    var usuario = $("#update_userAlumno").val();
+    var NumBoleta = $("#add_idBoleta").val();
+    var correo = $("#add_correoAlumno").val();
+    var contra = $("#add_passwordAlumno").val();
+    var usuario = $("#add_userAlumno").val();
 
     var expresionCorreo = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     var expresionName = /^[a-zA-Z ]+$/;
@@ -351,6 +353,103 @@ function validarupdate() {
     }
 }
 
+function validarMateria() {
+    var idMateria = $("#update_idMateria").val();
+    var nombreA = $("#add_nombreA").val();
+    var profesor = $("#add_profesor").val();
+    var cupo = $("#add_Cupo").val();
+    var salon = $("#add_Salon").val();
+    var horario = $("#add_Horario").val();
+    var expresionName = /^[a-zA-Z ]+$/;
+    var expresioncupo = /^[2|3]+[0|1|2|3|4|5|6]+$/;
+    var expresionsalon =/^[1|2]+[0|1|2|]+[0|1]+[0-9]$/;
+    if (idMateria === "" || nombreA === "" || profesor === "" || cupo === "" || salon === "" || horario === "") {
+        alert("Existen campos vacíos");
+        return false;
+    }
+    else if (idMateria.length > 3) {
+        alert("El id de la Materia no es valido");
+        return false;
+    }
+    else if (nombreA.length > 30) {
+        alert("La Materia no es valido");
+        return false;
+    }
+    else if (nombreA.length < 2) {
+        alert("La Materia no es valido");
+        return false;
+    }
+    else if (!expresionName.test(nombreA)) {
+        alert("La Materia no es valido");
+        return false;
+    }
+    else if (profesor.length > 30) {
+        alert("El profesor no es valido");
+        return false;
+    }
+    else if (profesor.length < 3) {
+        alert("El profesor no es valido");
+        return false;
+    }
+    else if (!expresionName.test(profesor)) {
+        alert("El profesor no es valido");
+        return false;
+    }
+    else if (cupo.length > 3) {
+        alert("El cupo no es valido");
+        return false;
+    }
+    else if (!expresioncupo.test(nombreA)) {
+        alert("La Materia no es valido");
+        return false;
+    }
+    else if (salon.length > 4) {
+        alert("El salon no es valido");
+        return false;
+    }
+    else if (!expresionsalon.test(profesor)) {
+        alert("El salon no es valido");
+        return false;
+    }
+    else if (horario.length > 10) {
+        alert("El horario no es valido");
+        return false;
+    }
+    else if (isNaN(idMateria)) {
+        alert("El id de la Materia no es valido");
+        return false;
+    }
+    else if (isNaN(salon)) {
+        alert("El salon no es valido");
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+function deleteMateria() {
+    var idMateria = $("#update_idMateria").val();
+    if (idMateria === "") {
+        alert("Existen campos vacíos");
+        return false;
+    }
+    else if (idMateria.length < 3) {
+        alert("El id de la Materia no es valido");
+        return false;
+    }
+    else if (isNaN(idMateri)) {
+        alert("El id de la Materia no es valido");
+        return false;
+    } else if (exist == false) {
+        alert("El id de la Materia no es valido");
+        return false;
+    }
+
+    else {
+        return true;
+    }
+}
 
 (function ($) {
     $(document).ready(function () {
