@@ -1,3 +1,4 @@
+/*
 function validarupdate(){
 
 	var NumBoleta,usuario,correo,contra;
@@ -84,3 +85,4 @@ function validarupdate(){
         });
     }
 }
+*/

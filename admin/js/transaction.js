@@ -11,7 +11,7 @@ function addRecord() {
         idBoleta: idBoleta,
         correoAlumno: correoAlumno,
         passwordAlumno: passwordAlumno,
-		userAlumno: userAlumno
+        userAlumno: userAlumno
     }, function (data, status) {
         // close the popup
         $("#createUser").modal("hide");
@@ -31,7 +31,7 @@ function addRecord() {
 function readRecords() {
     $.get("./ajax/readRecord.php", {}, function (data, status) {
         $("#recarga").html(data);
-    });
+    });0
 }
 function readRecordsM() {
     $.get("./ajax/readMateria.php", {}, function (data, status) {
@@ -48,33 +48,38 @@ function readMessage() {
 function DeleteUser() {
 
     var idBoleta = $("#delete_idBoleta").val();
-    var conf = confirm("¿Está seguro, realmente desea eliminar el registro?");
-    if (conf == true) {
-        $.post("./ajax/deleteUser.php", {
+    if (validardelete() == true) {
+        var conf = confirm("¿Está seguro, realmente desea eliminar el registro?");
+        if (conf == true) {
+            $.post("./ajax/deleteUser.php", {
                 idBoleta: idBoleta
             },
-            
-            function (data, status) {
-                // hide modal popup
-                $("#modelId2").modal("hide");
-                // reload Users by using readRecords();
-                readRecords();
-                $("#delete_idBoleta").val("");
-            }
-        );
-        
+
+                function (data, status) {
+                    // hide modal popup
+                    $("#modelId2").modal("hide");
+                    // reload Users by using readRecords();
+                    readRecords();
+                    $("#delete_idBoleta").val("");
+                }
+            );
+
+        }
     }
 }
 
 function DeleteMateria() {
 
     var idMateria = $("#delete_idMateria").val();
+
+
     var conf = confirm("¿Está seguro, realmente desea eliminar el registro?");
+
     if (conf == true) {
         $.post("./ajax/deleteMateria.php", {
-                idMateria: idMateria
-            },
-            
+            idMateria: idMateria
+        },
+
             function (data, status) {
                 // hide modal popup
                 $("#modelDelete").modal("hide");
@@ -83,15 +88,16 @@ function DeleteMateria() {
                 $("#delete_idMateria").val("");
             }
         );
-        
+
     }
+
 }
 
 function GetUserDetails(idBoleta) {
     $("#update_idBoleta").val(idBoleta);
     $.post("./ajax/readUserDetails.php", {
-            idBoleta: idBoleta
-        },
+        idBoleta: idBoleta
+    },
         function (data, status) {
             // PARSE json data
             var user = JSON.parse(data);
@@ -112,16 +118,16 @@ function UpdateUserDetails() {
     var correoAlumno = $("#update_correoAlumno").val();
     var passwordAlumno = $("#update_passwordAlumno").val();
     var userAlumno = $("#update_userAlumno").val();
-    
+
     // get hidden field value
 
     // Update the details by requesting to the server using ajax
     $.post("./ajax/updateUserDetails.php", {
-            idBoleta: idBoleta,
-            correoAlumno: correoAlumno,
-            passwordAlumno: passwordAlumno,
-            userAlumno: userAlumno
-        },
+        idBoleta: idBoleta,
+        correoAlumno: correoAlumno,
+        passwordAlumno: passwordAlumno,
+        userAlumno: userAlumno
+    },
         function (data, status) {
             // hide modal popup
             $("#update_user_modal").modal("hide");
@@ -129,35 +135,36 @@ function UpdateUserDetails() {
             readRecords();
         }
     );
+
 }
 function MessagePublic() {
     // get values
     var mensajePublico = $("#add_mensajeP").val();
     // Update the details by requesting to the server using ajax
     $.post("./ajax/updateMessagePublic.php", {
-            mensajePublico: mensajePublico,
-          
-        },
+        mensajePublico: mensajePublico,
+
+    },
         function (data, status) {
             // hide modal popup
             $("#modelMP").modal("hide");
             // reload Users by using readRecords();
             readMessage();
             $("#add_mensajeP").val("");
-       
+
         }
     );
 }
 function MessagePrivate() {
     // get values
-    var mensajePrivado= $("#add_mensajePP").val();
+    var mensajePrivado = $("#add_mensajePP").val();
     var idBoleta = $("#msg_idBoleta").val();
     // Update the details by requesting to the server using ajax
     $.post("./ajax/updateMessagePrivate.php", {
-            mensajePrivado: mensajePrivado,
-            idBoleta:idBoleta
-          
-        },
+        mensajePrivado: mensajePrivado,
+        idBoleta: idBoleta
+
+    },
         function (data, status) {
             // hide modal popup
             $("#modelMP2").modal("hide");
@@ -178,16 +185,16 @@ function UpdateMateriaDetails() {
     var salon = $("#update_Salon").val();
     var horario = $("#update_Horario").val();
     // get hidden field value
-
+    if(validarupdate()==true){
     // Update the details by requesting to the server using ajax
     $.post("./ajax/updateMateriaDetails.php", {
-            idMateria: idMateria,
-            nombreA: nombreA,
-            profesor: profesor,
-            cupo: cupo,
-            salon: salon,
-            horario: horario
-        },
+        idMateria: idMateria,
+        nombreA: nombreA,
+        profesor: profesor,
+        cupo: cupo,
+        salon: salon,
+        horario: horario
+    },
         function (data, status) {
             // hide modal popup
             $("#updateMateria").modal("hide");
@@ -201,6 +208,7 @@ function UpdateMateriaDetails() {
             $("#update_Horario").val("");
         }
     );
+    }
 }
 function AddMateriaDetails() {
     // get values
@@ -214,13 +222,13 @@ function AddMateriaDetails() {
 
     // Update the details by requesting to the server using ajax
     $.post("./ajax/addMateriaDetails.php", {
-            idMateria: idMateria,
-            nombreA: nombreA,
-            profesor: profesor,
-            cupo: cupo,
-            salon: salon,
-            horario: horario
-        },
+        idMateria: idMateria,
+        nombreA: nombreA,
+        profesor: profesor,
+        cupo: cupo,
+        salon: salon,
+        horario: horario
+    },
         function (data, status) {
             // hide modal popup
             $("#createMateria").modal("hide");
@@ -234,12 +242,132 @@ function AddMateriaDetails() {
             $("#add_Horario").val("");
         }
     );
+}/*
+function stateRegUserByBoleta(numBoleta){
+   var result=2;
+   $.post("./ajax/searchBoleta.php", {
+        numBoleta:numBoleta
+    },function (data, status) {
+       alert("data es : "+data);
+       result=$('data');
+       //result=parseInt(data);
+       return (result);
+    })
+    return (result);
+    ;
+
+}*/
+function validardelete() {
+
+    var NumBoleta = $("#delete_idBoleta").val();
+    var expresionBoleta = /^[2]+[0]+[1|2]+[1|2|3|4|5|6|7|8|9]+[6]+[3]+[0]+[0-9]+$/;
+
+    if(NumBoleta === "") {
+        alert("Existen campos vacíos");
+        return false;
+    }
+    else if (NumBoleta.length > 15) {
+        alert("El Numero de Boleta no es valido");
+        return false;
+    }
+    else if (NumBoleta.length < 10) {
+        alert("El Numero de Boleta no es valido");
+        return false;
+    }
+
+    else if (!expresionBoleta.test(NumBoleta)) {
+        alert("Expr No es un numero de Boleta Valido");
+        return false;
+    }
+    else if (isNaN(NumBoleta)) {
+        alert('No es numero de Boleta Valido');
+        return false;
+    }else if(exist==false){
+        alert("No existe el numero de boleta");
+        return false;
+    } 
+    
+    else {
+        return true;
+    }
+
+
+}
+
+function validarupdate(){
+
+	var NumBoleta,usuario,correo,contra;
+	//NumBoleta 	= 	$("#delete_idBoleta").val();
+	//usuario 	= 	document.getElementById("add_userAlumno").value;
+	//correo 		=	document.getElementById("add_correoAlumno").value;
+	//contra 		= 	document.getElementById("add_passwordAlumno").value;
+	var expresionCorreo = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	var expresionName = /^[a-zA-Z ]+$/;
+	var expresionBoleta = /^[2]+[0]+[1|2]+[1|2|3|4|5|6|7|8|9]+[6]+[3]+[0]+[0-9]+$/;
+	if(NumBoleta === "" ||usuario === "" ||correo === "" ||contra === "" )
+	{
+		alert("Existen campos vacíos");
+		return false;
+	}
+	else if (NumBoleta.length>15)
+	{
+		alert("El Numero de Boleta no es valido");
+		return false;
+	}
+	else if (NumBoleta.length<10)
+	{
+		alert("El Numero de Boleta no es valido");
+		return false;
+	}
+	else if(!expresionBoleta.test(NumBoleta))
+	{
+		alert("No es un numero de Boleta Valido");
+		return false;
+	}
+	else if (usuario.length>30)
+	{
+		alert('El nombre es muy largo');
+		return false;
+	}
+	else if(usuario.length<3)
+	{
+		alert('El nombre es muy corto');
+		return false;
+	}
+	else if(!expresionName.test(usuario))
+	{
+		alert("El Nombre no es valido");
+		return false;
+	}
+	else if (correo.length > 30){
+		alert('El correo es muy largo, por favor intenta con otro');
+		return false;
+	}
+	else if(!expresionCorreo.test(correo))
+	{
+		alert("El correo no es valido");
+		return false;
+	}
+	else if (contra.length > 20) {
+		alert('La contraseña es muy larga, no la vas a recordar');
+		return false;
+	}
+	else if (isNaN(NumBoleta))
+	{
+		alert('No es numero de Boleta Valido');
+		return false;
+	}
+	else{
+		return true;
+    }
 }
 
 
-
-(function ($) { $(document).ready(function(){ 
-                                    readRecords();
-                                    readRecordsM();
-                                    readMessage()}
-                                    ); })(jQuery); 
+(function ($) {
+    $(document).ready(function () {
+        readRecords();
+        readRecordsM();
+        readMessage()
+    }
+    );
+})(jQuery); 

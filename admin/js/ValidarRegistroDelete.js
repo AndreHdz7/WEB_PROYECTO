@@ -1,4 +1,4 @@
-function validardelete(){
+/*function validardelete(){
 
 	var NumBoleta,usuario,correo,contra,contraRep;
 	NumBoleta 	= 	document.getElementById("delete_idBoleta").value;
@@ -29,6 +29,9 @@ function validardelete(){
 	{
 		alert('No es numero de Boleta Valido');
 		return false;
+	}else{
+		return true;
 	}
 	
 }
+*/
