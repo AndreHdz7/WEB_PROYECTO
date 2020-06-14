@@ -272,18 +272,15 @@ function validardelete() {
         alert("El Numero de Boleta no es valido");
         return false;
     }
-
+/*
     else if (!expresionBoleta.test(NumBoleta)) {
         alert("Expr No es un numero de Boleta Valido");
         return false;
     }
-    else if (isNaN(NumBoleta)) {
+  */  else if (isNaN(NumBoleta)) {
         alert('No es numero de Boleta Valido');
         return false;
-    } else if (exist == false) {
-        alert("No existe el numero de boleta");
-        return false;
-    }
+    } 
 
     else {
         return true;
@@ -313,11 +310,11 @@ function validarupdate() {
     else if (NumBoleta.length < 10) {
         alert("El Numero de Boleta no es valido");
         return false;
-    }
+    }/*
     else if (!expresionBoleta.test(NumBoleta)) {
         alert("No es un numero de Boleta Valido");
         return false;
-    }
+    }*/
     else if (usuario.length > 30) {
         alert('El nombre es muy largo');
         return false;
