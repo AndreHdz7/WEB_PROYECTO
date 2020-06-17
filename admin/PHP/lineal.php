@@ -5,8 +5,8 @@ require_once "conexion.php";
 $conexion3 = conexion();
 $conexion4 = conexion();
 $arr4 = array();
-$sql3 = "SELECT count(numBoleta) as totalU from usuarios ";
-$sqlRT="SELECT numBoleta FROM usuarios INTERSECT (SELECT numBoleta FROM usuarios as Us INNER JOIN materia_seleccionadas AS Ms ON Ms.numBoleta_seleccionadas=Us.numBoleta)";
+$sql3 = " SELECT count(numBoleta) as totalU from usuarios ";
+$sqlRT=" SELECT numBoleta FROM usuarios, materia_seleccionadas WHERE usuarios.numBoleta = materia_seleccionadas.numBoleta_seleccionadas ";
 
 $result3 = mysqli_query($conexion3, $sql3);
 $mostrarn = mysqli_fetch_assoc($result3);
